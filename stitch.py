@@ -4,7 +4,7 @@ import argparse
 import imutils
 import cv2
 
-from .panorama import Stitcher
+import stitcher as st
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -19,7 +19,7 @@ imageA = imutils.resize(imageA, width=400)
 imageB = imutils.resize(imageB, width=400)
 
 # stitch the images together to create a panorama
-stitcher = Stitcher()
+stitcher = st.Stitcher()
 (result, vis) = stitcher.stitch([imageA, imageB], showMatches=True)
 
 # show the images
