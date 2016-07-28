@@ -15,16 +15,14 @@ args = vars(ap.parse_args())
 # load the two images and resize them to have a width of 400 pixels
 imageA = cv2.imread(args["first"])
 imageB = cv2.imread(args["second"])
-imageA = imutils.resize(imageA, width=400)
-imageB = imutils.resize(imageB, width=400)
+imageA = imutils.resize(imageA, width=600)
+imageB = imutils.resize(imageB, width=600)
 
 # stitch the images together to create a panorama
 stitcher = st.Stitcher()
 (result, vis) = stitcher.stitch([imageA, imageB], showMatches=True)
 
 # show the images
-cv2.imshow("Image A", imageA)
-cv2.imshow("Image B", imageB)
 cv2.imshow("Keypoint Matches", vis)
 cv2.imshow("Result", result)
 cv2.waitKey(0)
