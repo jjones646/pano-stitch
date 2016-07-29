@@ -35,7 +35,6 @@ class Stitcher:
 		return result
 
 	def detectAndDescribe(self, image):
-		# convert the image to grayscale
 		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		# detect keypoints & extract features in the image
 		if self.isv3:
@@ -55,7 +54,7 @@ class Stitcher:
 		rawMatches = matcher.knnMatch(featuresA, featuresB, 2)
 		# loop over the raw matches
 		for m in rawMatches:
-			# ensure the distance is within a certain ratio of each other (i.e. Lowe's ratio test)
+			# ensure the distance is within a certain ratio of each other
 			if len(m) == 2 and m[0].distance < m[1].distance * ratio:
 				matches.append((m[0].trainIdx, m[0].queryIdx))
 		# computing a homography requires at least 4 matches
@@ -74,7 +73,7 @@ class Stitcher:
 		# initialize the output visualization image
 		(hA, wA) = imageA.shape[:2]
 		(hB, wB) = imageB.shape[:2]
-		vis = np.zeros((max(hA, hB), wA + wB, 3), dtype="uint8")
+		vis = np.zeros((max(hA, hB), wA + wB, 3), dtype='uint8')
 		vis[0:hA, 0:wA] = imageA
 		vis[0:hB, wA:] = imageB
 		# loop over the matches
