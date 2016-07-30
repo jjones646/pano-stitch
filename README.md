@@ -8,7 +8,7 @@ Stitch panorama images together with OpenCV.
 To run the program using the eample image, invoke python and pass in the path to the image.
 
 ```
-python stitch.py images/1.jpg images/2.jpg
+python stitch.py -f images/grand_canyon_left_01.png -s images/grand_canyon_right_01.png
 ```
 
 

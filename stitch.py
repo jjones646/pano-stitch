@@ -23,6 +23,10 @@ stitcher = st.Stitcher()
 (result, vis) = stitcher.stitch([imageA, imageB], showMatches=True)
 
 # show the images
-cv2.imshow("Keypoint Matches", vis)
-cv2.imshow("Result", result)
-cv2.waitKey(0)
+#cv2.imshow("Keypoint Matches", vis)
+#cv2.imshow("Result", result)
+#cv2.waitKey(0)
+
+cv2.imwrite('output.jpg', result)
+print('saved to output.jpg')
+
